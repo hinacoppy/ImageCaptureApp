@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+<meta name="description" content="Image Capture App">
+<meta name="author" content="(C)hinacoppy 2023">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/imagecapture.css">
+<link rel="icon" href="icon/favicon.ico">
+<link rel="apple-touch-icon" href="icon/apple-touch-icon.png">
+<title>ImageCaptureApp</title>
+</head>
+<body class="container">
+  <div id="adjustment" class="adjustment">
+    <video id="video" playsinline></video>
+    <div class="topleft">調整</div>
+    <button id="btnPhotograph1" class="bottomleft">撮影</button>
+    <button id="btnSetting" class="bottomright">設定</button>
+  </div>
+
+  <div id="photograph" class="photograph">
+    <canvas id="canvas"></canvas>
+    <div class="topleft">撮影</div>
+  </div>
+
+  <div id="setting" class="setting">
+    <h1>設定</h1>
+    <table>
+      <tr><td>使用カメラ：&emsp;</td><td class="segmented">
+      <label><input type="radio" name="camera" value="face" checked><span class="label">内側</span></label>
+      <label><input type="radio" name="camera" value="environment"><span class="label">外側</span></label>
+      </td></tr>
+      <tr><td>解像度：</td><td class="segmented">
+      <label><input type="radio" name="resolution" value="low"><span class="label">低</span></label>
+      <label><input type="radio" name="resolution" value="middle" checked><span class="label">中</span></label>
+      <label><input type="radio" name="resolution" value="high"><span class="label">高</span></label>
+      </td></tr>
+      <tr><td>ファイル名：</td><td>
+      <input type="text" id="fileheader" size="5" value="img">YYYYMMDDhhmmss.png
+      </td></tr>
+    </table>
+    <br><br>
+    <button id="btnAdjustment">調整</button> &emsp;
+    <button id="btnPhotograph2">撮影</button> &emsp;
+    <a href="viewer.html" target="viewer"><button id="viewer" >Viewer</button></a> &emsp;
+    <a href="help.html" target="help"><button id="help">HELP</button></a>
+  </div>
+
+<a id="atag" href="" download=""></a>
+<div style="position:relative;z-index:99;">
+<div>DEBUG AREA</div>
+<div id="debug1"></div>
+<div id="debug2"></div>
+<div id="debug3"></div>
+<div id="debug4"></div>
+<div id="debug5"></div>
+<div id="debug6"></div>
+<div id="debug7"></div>
+<div id="debug8"></div>
+</div>
+
+<script src="js/imagecapture_class.js"></script>
+<script>
+  var imagecapture = new ImageCapture();
+</script>
+</body>
+</html>

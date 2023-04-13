@@ -1,0 +1,99 @@
+/* document outline ----------------------------------------- */
+/* Designed by hinacoppy 2023                                 */
+
+/* document outline ----------------------------------------- */
+*{
+  user-select:none; /* タップ、ドラッグで文字選択しないように */
+}
+html{
+  height:100%;
+  overflow:hidden;
+  overscroll-behavior:none; /* バウンススクロールを抑止(only for Android) */
+}
+.container{
+  position:relative;
+  padding:0;
+  margin:0;
+  background:#efe;
+}
+.adjustment{
+  position:absolute;
+  top:0;
+  left:0;
+}
+#video{
+  max-width:100vw; /* 画面からはみ出すときは画面内に収めるよう表示 */
+  max-height:100vh;
+}
+.photograph{
+  position:absolute;
+  top:0;
+  left:0;
+}
+#canvas{
+  width:100vw; /* 常に全画面で表示 */
+  height:100vh;
+}
+.setting{
+  position:absolute;
+  top:0;
+  left:0;
+  padding:20px;
+}
+.topleft{
+  position:fixed;
+  top:1vh;
+  left:1vw;
+  font-size:3vw;
+}
+.bottomleft{
+  position:fixed;
+  bottom:1vh;
+  left:1vw;
+}
+.bottomright{
+  position:fixed;
+  bottom:1vh;
+  right:1vw;
+}
+button{
+  padding:2vh 4vw;
+  border:4px solid;
+  border-radius:4vw;
+  margin-top:1vh;
+  display:inline-block;
+  font-size:2vw;
+  background-color:#adf;
+  border-color:#29f;
+  color:#29f;
+}
+/* Segmented Control ----------------------------------------- */
+/* (参考) https://ginpen.com/2012/12/11/segmented-control/ */
+.segmented{
+  display:inline-block;
+}
+.segmented .label{
+  border:1px solid;
+  float:left;
+  padding:0em 0.5em;
+  text-align:center;
+  width:12vw;
+  background-color:#eee;
+  border-color:#ccc;
+  color:#666;
+}
+.segmented input{
+  display:none;
+}
+.segmented input:checked + .label{
+  background-color:#29f;
+  color:#fff;
+}
+.setting tr{
+  height:10vh;
+  line-height:10vh;
+  font-size:2vw;
+}
+.setting input{
+  font-size:2vw;
+}
