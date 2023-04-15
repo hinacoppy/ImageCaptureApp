@@ -2,13 +2,12 @@
 // (参考) https://developer.mozilla.org/ja/docs/Web/Progressive_web_apps/Offline_Service_workers
 'use strict';
 
-const cacheName = 'imagecapture-v20230412';
+const cacheName = 'imagecapture-v20230415';
 const ORIGIN = (location.hostname == 'localhost') ? '' : location.protocol + '//' + location.hostname;
 
 const contentToCache = [
   ORIGIN + '/ImageCaptureApp/',
   ORIGIN + '/ImageCaptureApp/index.html',
-  ORIGIN + '/ImageCaptureApp/viewer.html',
   ORIGIN + '/ImageCaptureApp/help.html',
   ORIGIN + '/ImageCaptureApp/manifest.json',
   ORIGIN + '/ImageCaptureApp/icon/favicon.ico',

@@ -27,7 +27,7 @@
   </div>
 
   <div id="setting" class="setting">
-    <h1>設定</h1>
+    <h3>設定</h3>
     <table>
       <tr><td>使用カメラ：&emsp;</td><td class="segmented">
       <label><input type="radio" name="camera" value="face" checked><span class="label">内側</span></label>
@@ -42,16 +42,14 @@
       <input type="text" id="fileheader" size="5" value="img">YYYYMMDDhhmmss.png
       </td></tr>
     </table>
-    <br><br>
+    <div class="bottomleft">
     <button id="btnAdjustment">調整</button> &emsp;
     <button id="btnPhotograph2">撮影</button> &emsp;
-    <a href="viewer.html" target="viewer"><button id="viewer" >Viewer</button></a> &emsp;
-    <a href="help.html" target="help"><button id="help">HELP</button></a>
+    <a href="help.html" target="help"><button id="help">HELP</button></a></div>
   </div>
 
 <a id="atag" href="" download=""></a>
-<div style="position:relative;z-index:99;">
-<div>DEBUG AREA</div>
+<div style="position:relative;z-index:99;font-size:small;">
 <div id="debug1"></div>
 <div id="debug2"></div>
 <div id="debug3"></div>
@@ -62,6 +60,7 @@
 <div id="debug8"></div>
 </div>
 
+<script src="/bgscoreapp/js/swipetracker_class.js"></script>
 <script src="js/imagecapture_class.js"></script>
 <script>
   var imagecapture = new ImageCapture();

@@ -45,13 +45,26 @@ class ImageCapture {
   }
 
   initEventListener() {
-    this.photograph.addEventListener("click",      (e) => { e.preventDefault(); this.takePicture(); });
-    this.photograph.addEventListener("contextmenu",(e) => { e.preventDefault(); this.changeMode("setting"); });
+    //swipeイベントを登録
+    const thres = Math.max(window.innerHeight, window.innerWidth) / 6;
+    new SwipeTracker(this.photograph, "tl", thres); //tapかswipeleftを見張る。(ruはtapとみなす)
+    this.photograph.addEventListener("mytap",      (e) => { e.preventDefault(); this.takePicture();  });
+    this.photograph.addEventListener("swipeleft",  (e) => { e.preventDefault(); this.changeMode("setting");  });
+
+//    this.photograph.addEventListener("click",      (e) => { e.preventDefault(); this.takePicture(); });
+//    this.photograph.addEventListener("contextmenu",(e) => { e.preventDefault(); this.changeMode("setting"); });
     this.btnSetting.addEventListener("click",      (e) => { e.preventDefault(); this.changeMode("setting"); });
     this.btnAdjustment.addEventListener("click",   (e) => { e.preventDefault(); this.changeMode("adjustment"); });
     this.btnPhotograph1.addEventListener("click",  (e) => { e.preventDefault(); this.changeMode("photograph"); });
-    this.btnPhotograph2.addEventListener("click",  (e) => { e.preventDefault(); this.changeMode("photograph"); });
+    //this.btnPhotograph2.addEventListener("click",  (e) => { e.preventDefault(); this.changeMode("photograph"); });
     this.video.addEventListener("canplay",         (e) => { e.preventDefault(); this.getVideoSize(); });
+    screen.orientation.addEventListener("change",  (e) => { e.preventDefault(); this.changeOrientation(); });
+    window.addEventListener("mousedown", (e) => {console.log("mousedown event");
+      const screenXY = e.screenX + " " + e.screenY + " ";
+      const clientXY = e.clientX + " " + e.clientY + " ";
+      const pageXY = e.pageX + " " + e.pageY + " ";
+      console.log("debug6"+ " SCP "+ screenXY+ clientXY+ pageXY);
+    });
   }
 
   changeMode(mode) {
@@ -69,7 +82,8 @@ this.debuglog("debug1", "chageMode()", mode);
       this.photograph.style.display = "block";
       this.setting.style.display    = "none";
       this.startVideo();
-      this.drawCanvas();
+      this.checkDialogPosition();
+//      this.drawCanvas();
       break;
     case "setting":
       this.adjustment.style.display = "none";
@@ -86,6 +100,48 @@ this.debuglog("debug2", "video.videoWidth Height", this.video.videoWidth, this.v
       this.canvas.width  = this.videowidth  = this.video.videoWidth;
       this.canvas.height = this.videoheight = this.video.videoHeight;
     }
+
+  changeOrientation() {
+console.log("端末の向きが " + screen.orientation.angle + "になりました。");
+this.debuglog("debug5", "端末の向きが " , screen.orientation.angle , "に", screen.orientation.type);
+    this.getVideoSize();
+  }
+
+  checkDialogPosition() {
+console.log("checkDialogPosition");
+
+      setTimeout(() => {
+console.log("keyEvent event");
+        document.dispatchEvent( new KeyboardEvent( "keyup",{key: "Enter" })) ;
+      }, 1000);
+/***********
+    this.adjustment.addEventListener("mousedown", (e) => {
+console.log("mousedown event");
+      e.preventDefault();
+      const screenXY = e.sceenX + " " + e.screenY;
+      const clientXY = e.clientX + " " + e.clientY;
+      const pageXY = e.pageX + " " + e.pageY;
+console.log("debug6"+ "S C P"+ screenXY+ clientXY+ pageXY);
+this.debuglog("debug6", "S C P", screenXY, clientXY, pageXY);
+    });
+********/
+    alert("TEST ALERT DIALOG");
+
+/***********************
+    document.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      const touches = e.changedTouthes;
+
+       let touchValue = "";
+        for(let i=0; i<touches.length; i++){
+            const x = Math.floor(touches[i].pageX);   // x座標
+            const y = Math.floor(touches[i].pageY);    // y座標
+            touchValue += `touches[${i}] x: ${x}, y: ${y}<br>`;
+        }
+this.debuglog("debug6", touchValue);
+    });
+***************************/
+  }
 
 //  clearCanvas() {
 //    this.context.fillStyle = "#aaa";
