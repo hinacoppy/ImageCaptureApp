@@ -2,7 +2,7 @@
 // (参考) https://developer.mozilla.org/ja/docs/Web/Progressive_web_apps/Offline_Service_workers
 'use strict';
 
-const cacheName = 'imagecapture-v20230415';
+const cacheName = 'imagecapture-v20230428';
 const ORIGIN = (location.hostname == 'localhost') ? '' : location.protocol + '//' + location.hostname;
 
 const contentToCache = [
@@ -17,7 +17,7 @@ const contentToCache = [
   ORIGIN + '/ImageCaptureApp/icon/android-chrome-512x512.png',
   ORIGIN + '/ImageCaptureApp/css/imagecapture.css',
   ORIGIN + '/ImageCaptureApp/js/imagecapture_class.js',
-  ORIGIN + '/ImageCaptureApp/js/viewer_class.js',
+  ORIGIN + '/bgscoreapp/js/swipetracker_class.js',
   ORIGIN + '/js/start-serviceWorker.js',
 ];
 

@@ -3,7 +3,7 @@
   "short_name": "ImageCaptureApp",
   "start_url": "/ImageCaptureApp/index.html",
   "scope": "/ImageCaptureApp/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#efe",
   "theme_color": "#efe",
   "description": "イメージキャプチャアプリ",

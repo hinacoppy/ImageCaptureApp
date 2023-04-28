@@ -58,7 +58,9 @@ class ImageCapture {
     this.btnPhotograph1.addEventListener("click",  (e) => { e.preventDefault(); this.changeMode("photograph"); });
     //this.btnPhotograph2.addEventListener("click",  (e) => { e.preventDefault(); this.changeMode("photograph"); });
     this.video.addEventListener("canplay",         (e) => { e.preventDefault(); this.getVideoSize(); });
-    screen.orientation.addEventListener("change",  (e) => { e.preventDefault(); this.changeOrientation(); });
+//    screen.orientation.addEventListener("change",  (e) => { e.preventDefault(); this.changeOrientation(); }); //iOS >= 16.4
+    window.addEventListener("orientationchange",   (e) => { e.preventDefault(); this.changeOrientation(); }); //iOS < 16.4
+
     window.addEventListener("mousedown", (e) => {console.log("mousedown event");
       const screenXY = e.screenX + " " + e.screenY + " ";
       const clientXY = e.clientX + " " + e.clientY + " ";
@@ -125,7 +127,7 @@ console.log("debug6"+ "S C P"+ screenXY+ clientXY+ pageXY);
 this.debuglog("debug6", "S C P", screenXY, clientXY, pageXY);
     });
 ********/
-    alert("TEST ALERT DIALOG");
+//    alert("TEST ALERT DIALOG");
 
 /***********************
     document.addEventListener("touchend", (e) => {
